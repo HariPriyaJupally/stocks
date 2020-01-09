@@ -1,6 +1,6 @@
 import React from "react";
 
-import Tweet from "../Tweet/tweet";
+import Tweet from "../Tweet/Tweet";
 
 function Tweets(props) {
     return (

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './App.css';
-import Tweets from './components/Tweets/tweets';
-import Search from './components/Search/search';
+import Tweets from './components/Tweets/Tweets';
+import Search from './components/Search/Search';
 // import Navbar from './components/Navbar/navbar';
 
 
