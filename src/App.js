@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import './App.css';
 import Tweets from './components/Tweets/Tweets';
 import Search from './components/Search/Search';
-// import Navbar from './components/Navbar/navbar';
+
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 function App() {
@@ -10,10 +11,12 @@ function App() {
   let [state, setState] = useState({tweets: [], search: ''});
 
   const fetchTweets = function (searchText) {
-    fetch(`https://api.stocktwits.com/api/2/search/symbols.json?q=${searchText}`)
+    fetch(`https://api.stocktwits.com/api/2/streams/symbol/${searchText}.json`)
     .then(res => res.json())
     .then(results => setState({tweets: results.results, search: searchText}));
   }
+  
+  
 
   return (
     <div>
