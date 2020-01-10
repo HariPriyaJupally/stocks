@@ -5,15 +5,26 @@ import Search from './components/Search/Search';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 
+let interval = null;
 
 function App() {
 
   let [state, setState] = useState({tweets: [], search: ''});
 
+
   const fetchTweets = function (searchText) {
-    fetch(`https://api.stocktwits.com/api/2/streams/symbol/${searchText}.json`)
-    .then(res => res.json())
-    .then(results => setState({tweets: results.results, search: searchText}));
+    if (interval) {
+      clearInterval(interval);
+    }
+    if (searchText.trim() === '') {
+      setState({tweets: [], search: searchText})
+      return;
+    }
+    interval = setInterval(() => {
+      fetch(`http://localhost:4000/${searchText}.json`)
+      .then(res => res.json())
+      .then(results => setState({tweets: results.messages, search: searchText}));
+    }, 2000);
   }
   
   
