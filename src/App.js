@@ -21,7 +21,7 @@ function App() {
       return;
     }
     interval = setInterval(() => {
-      fetch(`http://localhost:4000/${searchText}.json`)
+      fetch(`/${searchText}.json`)
       .then(res => res.json())
       .then(results => setState({tweets: results.messages, search: searchText}));
     }, 2000);
